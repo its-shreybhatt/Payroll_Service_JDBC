@@ -30,15 +30,26 @@ public class Main {
 
         String updateData = "UPDATE employee_payroll set salary = 30000 WHERE name='Sapna'";
         statement.execute(updateData);
-
         String nameToEdit = "Sapna";
         String updateUsingPrepared = String.format("UPDATE employee_payroll set salary = ?  WHERE name='%s'; ", nameToEdit);
         PreparedStatement newStatement = connection.prepareStatement(updateUsingPrepared);
         newStatement.setDouble(1, 2500);
         newStatement.execute();
 
-        String deleteDatabase = "DROP DATABASE payroll_service_JDBC";
+        String checkByDate = String.format("SELECT * FROM employee_payroll " +
+                "WHERE start BETWEEN '%s' and '%s'; ", Date.valueOf("2020-12-29"), Date.valueOf("2022-01-01"));
+        ResultSet result = statement.executeQuery(checkByDate);
+        while (result.next()) {
+            String id = result.getString("id");
+            String name = result.getString("name");
+            String salary = result.getString("salary");
+            String start = result.getString("start");
 
+            System.out.println(id + "- " + name + ", " + salary + ", " + start);
+        }
+
+
+        String deleteDatabase = "DROP DATABASE payroll_service_JDBC";
         System.out.print("Do you want to delete the Table (Yes/No) - ");
         String choice = new Scanner(System.in).next();
 
@@ -46,6 +57,5 @@ public class Main {
             statement.execute(deleteDatabase);
             System.out.println("Tables deleted successfully....");
         }
-
     }
 }
