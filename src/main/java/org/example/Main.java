@@ -64,10 +64,11 @@ public class Main {
         String createTablePayroll = "CREATE TABLE payroll" +
                 "(department VARCHAR(150) NOT NULL PRIMARY KEY,basic_pay VARCHAR(150) NOT NULL," +
                 "deductions VARCHAR(150) NOT NULL, taxable_pay VARCHAR(150) NOT NULL," +
-                "income_tax VARCHAR(150) NOT NULL, net_pay VARCHAR(150) NOT NULL)";
+                "income_tax VARCHAR(150) NOT NULL, net_pay VARCHAR(150) NOT NULL" +
+                "id int unsigned,FOREIGN KEY(id) REFERENCES employee_payroll(id))";
 
-        String insertIntoPayroll = "INSERT INTO payroll(department,basic_pay,deductions,taxable_pay,income_tax,net_pay) " +
-                "VALUES ('marketing',999,5,6,33,1233);";
+        String insertIntoPayroll = "INSERT INTO payroll(department,basic_pay,deductions,taxable_pay,income_tax,net_pay,id) " +
+                "VALUES ('marketing',999,5,6,33,1233,3);";
 
         statement.execute(createTablePayroll);
         statement.execute(insertIntoPayroll);
