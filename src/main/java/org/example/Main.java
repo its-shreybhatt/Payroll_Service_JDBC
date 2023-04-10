@@ -59,9 +59,18 @@ public class Main {
 
         String insertEmployee = "INSERT INTO employee_payroll(name,salary,start) VALUES " +
                 "('Kamal',1090,'2022-02-22') ";
-
         statement.execute(insertEmployee);
 
+        String createTablePayroll = "CREATE TABLE payroll" +
+                "(department VARCHAR(150) NOT NULL PRIMARY KEY,basic_pay VARCHAR(150) NOT NULL," +
+                "deductions VARCHAR(150) NOT NULL, taxable_pay VARCHAR(150) NOT NULL," +
+                "income_tax VARCHAR(150) NOT NULL, net_pay VARCHAR(150) NOT NULL)";
+
+        String insertIntoPayroll = "INSERT INTO payroll(department,basic_pay,deductions,taxable_pay,income_tax,net_pay) " +
+                "VALUES ('marketing',999,5,6,33,1233);";
+
+        statement.execute(createTablePayroll);
+        statement.execute(insertIntoPayroll);
 
         String deleteDatabase = "DROP DATABASE payroll_service_JDBC";
         System.out.print("Do you want to delete the Table (Yes/No) - ");
