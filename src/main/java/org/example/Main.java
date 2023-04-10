@@ -57,6 +57,11 @@ public class Main {
         statement.execute(min);
         statement.execute(max);
 
+        String insertEmployee = "INSERT INTO employee_payroll(name,salary,start) VALUES " +
+                "('Kamal',1090,'2022-02-22') ";
+
+        statement.execute(insertEmployee);
+
 
         String deleteDatabase = "DROP DATABASE payroll_service_JDBC";
         System.out.print("Do you want to delete the Table (Yes/No) - ");
