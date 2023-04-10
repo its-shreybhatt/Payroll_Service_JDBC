@@ -48,6 +48,15 @@ public class Main {
             System.out.println(id + "- " + name + ", " + salary + ", " + start);
         }
 
+        String sum = "SELECT SUM(salary) FROM employee_payroll ";
+        String avg = "SELECT AVG(salary) FROM employee_payroll ";
+        String min = "SELECT MIN(salary) FROM employee_payroll ";
+        String max = "SELECT MAX(salary) FROM employee_payroll ";
+        statement.execute(sum);
+        statement.execute(avg);
+        statement.execute(min);
+        statement.execute(max);
+
 
         String deleteDatabase = "DROP DATABASE payroll_service_JDBC";
         System.out.print("Do you want to delete the Table (Yes/No) - ");
