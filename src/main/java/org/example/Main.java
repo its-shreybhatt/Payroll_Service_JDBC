@@ -16,12 +16,21 @@ public class Main {
         String createDatabase = "CREATE DATABASE payroll_service_JDBC";
         String useDatabase = "USE payroll_service_JDBC";
 
+        String createTable = "CREATE TABLE employee_payroll" +
+                "(id INT unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY ," +
+                "name VARCHAR(150) NOT NULL, salary DOUBLE NOT NULL,start DATE NOT NULL)";
+
+        String insertIntoTable = "INSERT INTO employee_payroll(name,salary,start) VALUES " +
+                "('Shrey',1234,'2020-05-29'), " +
+                "('Kartikeya',1111,'2021-01-01')," +
+                "('Sapna',999,'2021-05-20');";
+
         statement.execute(createDatabase);
         statement.execute(useDatabase);
-
+        statement.execute(createTable);
+        statement.execute(insertIntoTable);
 
         String deleteDatabase = "DROP DATABASE payroll_service_JDBC";
-
 
         System.out.print("Do you want to delete the Table (Yes/No) - ");
         String choice = new Scanner(System.in).next();
