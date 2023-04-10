@@ -25,10 +25,13 @@ public class Main {
                 "('Kartikeya',1111,'2021-01-01')," +
                 "('Sapna',999,'2021-05-20');";
 
+        String updateData = "UPDATE employee_payroll set salary = 30000 WHERE name='Sapna'";
+
         statement.execute(createDatabase);
         statement.execute(useDatabase);
         statement.execute(createTable);
         statement.execute(insertIntoTable);
+        statement.execute(updateData);
 
         String deleteDatabase = "DROP DATABASE payroll_service_JDBC";
 
