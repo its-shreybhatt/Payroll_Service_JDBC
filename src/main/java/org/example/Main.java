@@ -1,9 +1,6 @@
 package org.example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
 
 public class Main {
@@ -25,13 +22,20 @@ public class Main {
                 "('Kartikeya',1111,'2021-01-01')," +
                 "('Sapna',999,'2021-05-20');";
 
-        String updateData = "UPDATE employee_payroll set salary = 30000 WHERE name='Sapna'";
 
         statement.execute(createDatabase);
         statement.execute(useDatabase);
         statement.execute(createTable);
         statement.execute(insertIntoTable);
+
+        String updateData = "UPDATE employee_payroll set salary = 30000 WHERE name='Sapna'";
         statement.execute(updateData);
+
+        String nameToEdit = "Sapna";
+        String updateUsingPrepared = String.format("UPDATE employee_payroll set salary = ?  WHERE name='%s'; ", nameToEdit);
+        PreparedStatement newStatement = connection.prepareStatement(updateUsingPrepared);
+        newStatement.setDouble(1, 2500);
+        newStatement.execute();
 
         String deleteDatabase = "DROP DATABASE payroll_service_JDBC";
 
